@@ -72,22 +72,29 @@
             background: linear-gradient(135deg, var(--mensa-green-dark) 0%, var(--mensa-green-light) 100%);
         }
 
-        /* Estilos do Bloqueio */
+        /* Bloqueio de Acesso */
         #gatekeeper {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: var(--mensa-green-dark);
-            z-index: 9999;
+            z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
+
+        .hidden { display: none !important; }
+        .fade-in { animation: fadeIn 0.6s ease-in forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Ecrã de Senha (Gatekeeper) -->
+    <!-- Ecrã de Login (Gatekeeper) -->
     <div id="gatekeeper">
         <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-md w-full text-center">
             <img src="https://mensa.org.br/wp-content/uploads/2021/08/Mensa_Brasil_logo_vertical.png" alt="Mensa Brasil" class="h-20 mx-auto mb-8">
@@ -102,17 +109,16 @@
                 </button>
                 <p id="errorMessage" class="text-red-500 text-xs font-bold hidden mt-4">Senha incorreta. Tente novamente.</p>
             </form>
-            <p class="mt-8 text-[10px] text-gray-400 uppercase tracking-tighter">Copyright © Mensa Brasil - Documento Interno</p>
+            <p class="mt-8 text-[10px] text-gray-400 uppercase tracking-tighter italic">Documento Interno - Mensa Brasil</p>
         </div>
     </div>
 
-    <!-- Conteúdo Principal (Escondido Inicialmente) -->
+    <!-- Conteúdo Principal -->
     <div id="mainContent" class="hidden">
-        <!-- Header / Nav -->
         <header class="bg-white py-4 sticky top-0 z-50 header-shadow">
             <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 <div class="flex items-center">
-                    <a href="https://mensa.org.br" target="_blank" class="flex items-center">
+                    <a href="https://mensa.org.br" target="_blank">
                         <img src="https://mensa.org.br/wp-content/uploads/2021/08/Mensa_Brasil_logo_vertical.png" alt="Mensa Brasil Logo" class="h-16 md:h-20 object-contain">
                     </a>
                 </div>
@@ -124,17 +130,14 @@
                     <a href="#candidatura" class="btn-mensa px-6 py-3 rounded-full uppercase tracking-widest text-[10px] shadow-sm">
                         Inscrições
                     </a>
-                    <button onclick="logout()" class="text-gray-300 hover:text-red-500 transition-colors"><i class="fas fa-sign-out-alt"></i></button>
                 </nav>
             </div>
         </header>
 
-        <!-- Hero Section -->
         <section class="mensa-gradient py-24 relative overflow-hidden">
             <div class="absolute right-0 bottom-0 opacity-10">
                 <i class="fas fa-brain text-[20rem] text-white"></i>
             </div>
-            
             <div class="max-w-5xl mx-auto px-6 relative z-10">
                 <span class="text-mensa-yellow font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Documento de Orientação Operacional</span>
                 <h2 class="text-white text-5xl md:text-7xl font-bold mb-6 serif italic">Manual do Voluntário</h2>
@@ -145,133 +148,90 @@
         </section>
 
         <main class="max-w-6xl mx-auto px-6 py-20">
-            <!-- Prefácio Académico -->
             <article id="intro" class="mb-32">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <div class="section-accent"></div>
                         <h3 class="text-4xl font-bold text-mensa-green mb-6 serif">A Fenomenologia do Conflito</h3>
-                        <p class="text-gray-600 mb-6 text-lg italic">
-                            "Onde há paixão pelo trabalho voluntário, há risco de choque emocional se a estrutura não for sólida."
-                        </p>
                         <p class="text-gray-700 leading-relaxed mb-6">
-                            Analisamos que a <strong>acusação mútua</strong> é uma patologia comum em ONGs. Na Mensa, combatemos este fenómeno através da clareza absoluta de papéis e da profissionalização das relações.
+                            Combatemos a patologia da acusação mútua através da clareza absoluta de papéis e da profissionalização das relações internas.
                         </p>
                     </div>
-                    
                     <div class="bg-mensa-bg-light p-8 rounded-2xl border-l-8 border-mensa-green">
-                        <h4 class="font-bold text-mensa-green mb-4 uppercase text-sm tracking-widest">Factores de Risco Estrutural</h4>
+                        <h4 class="font-bold text-mensa-green mb-4 uppercase text-sm tracking-widest">Fatores de Risco</h4>
                         <ul class="space-y-4">
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-mensa-yellow mt-1 mr-3"></i>
-                                <span class="text-sm"><strong>Ambiguidade de Papéis:</strong> Quando as tarefas não têm "dono" claro, o erro gera busca por culpados.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-mensa-yellow mt-1 mr-3"></i>
-                                <span class="text-sm"><strong>Sobrecarga Cognitiva:</strong> Voluntários exaustos têm menor limiar de tolerância ao erro alheio.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-mensa-yellow mt-1 mr-3"></i>
-                                <span class="text-sm"><strong>Falta de Feedback Formal:</strong> A ausência de processos de RH torna as críticas subjectivas e agressivas.</span>
+                                <span class="text-sm"><strong>Ambiguidade de Papéis:</strong> Gera busca por culpados.</span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </article>
 
-            <!-- Estrutura Hierárquica -->
             <section id="estrutura" class="mb-32">
                 <div class="text-center mb-16">
                     <h3 class="text-4xl font-bold text-mensa-green mb-4 serif">Estrutura de Reporte</h3>
-                    <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">A Hierarquia de Apoio</p>
                 </div>
-                
                 <div class="max-w-4xl mx-auto space-y-8">
-                    <div class="bg-mensa-green p-8 rounded-xl text-center shadow-xl">
-                        <h4 class="text-white font-bold text-xl uppercase tracking-widest">Diretoria Executiva</h4>
-                        <p class="text-mensa-yellow text-xs mt-2 uppercase font-bold">Direção Geral e Visão</p>
+                    <div class="bg-mensa-green p-8 rounded-xl text-center shadow-xl text-white font-bold uppercase tracking-widest">
+                        Diretoria Executiva
                     </div>
-
-                    <div class="flex justify-center">
-                        <i class="fas fa-long-arrow-alt-down text-gray-200 text-3xl"></i>
-                    </div>
-
+                    <div class="flex justify-center"><i class="fas fa-arrow-down text-gray-200 text-2xl"></i></div>
                     <div class="bg-white border-4 border-mensa-green p-10 rounded-xl text-center relative shadow-2xl">
                         <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-mensa-yellow text-mensa-green px-6 py-2 rounded-full font-black text-xs uppercase shadow-md">
-                            Ponto Focal do Voluntariado
+                            Ponto Focal
                         </div>
-                        <h4 class="text-3xl font-bold text-mensa-green serif">RH & Bem-Estar</h4>
-                        <p class="text-gray-500 mt-2 font-semibold">Diretora Responsável: <span class="text-mensa-green">Ivana</span></p>
+                        <h4 class="text-3xl font-bold text-mensa-green serif italic">RH & Bem-Estar</h4>
+                        <p class="text-gray-500 mt-2 font-semibold">Responsável: <span class="text-mensa-green">Ivana</span></p>
                     </div>
-
-                    <div class="flex justify-center">
-                        <i class="fas fa-long-arrow-alt-down text-gray-200 text-3xl"></i>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-gray-50 p-6 rounded-lg text-center border border-gray-100">
-                            <h5 class="font-bold text-mensa-green uppercase text-sm">Coordenadores de Área</h5>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-lg text-center border border-gray-100">
-                            <h5 class="font-bold text-mensa-green uppercase text-sm">Membros Voluntários</h5>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Vagas -->
-            <section id="vagas" class="mb-32">
-                <div class="flex items-end justify-between mb-12">
-                    <h3 class="text-4xl font-bold text-mensa-green serif italic">Áreas de Atuação</h3>
-                    <span class="text-gray-300 font-black text-6xl opacity-20">SIGS</span>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl border-t-8 border-mensa-green shadow-lg card-hover">
-                        <i class="fas fa-laptop-code text-3xl text-mensa-green mb-6"></i>
-                        <h4 class="font-bold text-xl text-mensa-green mb-4">Tecnologia (TI)</h4>
-                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">Desenvolvimento e suporte.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl border-t-8 border-mensa-yellow shadow-lg card-hover">
-                        <i class="fas fa-comments text-3xl text-mensa-green mb-6"></i>
-                        <h4 class="font-bold text-xl text-mensa-green mb-4">Comunicação</h4>
-                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">Redação e Redes Sociais.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl border-t-8 border-mensa-green shadow-lg card-hover">
-                        <i class="fas fa-file-invoice text-3xl text-mensa-green mb-6"></i>
-                        <h4 class="font-bold text-xl text-mensa-green mb-4">Administração</h4>
-                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">Processos internos.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Candidatura -->
-            <section id="candidatura" class="bg-mensa-bg-light rounded-[3rem] p-12 md:p-24 text-center">
-                <h3 class="text-4xl md:text-5xl font-bold text-mensa-green mb-8 serif">Junte-se ao nosso Quadro</h3>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-12 text-lg">Inicie a sua jornada como voluntário oficial.</p>
-                <div class="flex flex-col md:flex-row justify-center gap-6">
-                    <a href="#" class="btn-mensa px-12 py-5 rounded-full text-sm uppercase tracking-widest shadow-xl">Candidatura Online</a>
                 </div>
             </section>
         </main>
 
-        <!-- Footer -->
         <footer class="bg-mensa-green py-20 text-white relative">
             <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-8 md:mb-0">
-                    <img src="https://mensa.org.br/wp-content/uploads/2021/08/Mensa_Brasil_logo_vertical.png" alt="Mensa" class="h-20 brightness-0 invert">
-                    <p class="text-xs text-gray-400 mt-4 tracking-widest uppercase font-bold">Mensa Brasil © 2024</p>
-                </div>
-                <div class="text-center md:text-right">
-                    <p class="serif italic text-2xl text-mensa-yellow">Sapere Aude</p>
-                </div>
+                <img src="https://mensa.org.br/wp-content/uploads/2021/08/Mensa_Brasil_logo_vertical.png" alt="Mensa" class="h-20 brightness-0 invert">
+                <p class="serif italic text-2xl text-mensa-yellow">Sapere Aude</p>
             </div>
             <div class="h-2 bg-mensa-yellow absolute bottom-0 w-full"></div>
         </footer>
     </div>
 
-    <!-- Script de Segurança -->
     <script>
-        // Senha configurada: "mensa2024" 
-        // Em SHA-256 para não expor a senha em texto limpo no código.
-        const VALID_HASH = "8c66e4a287a9332ef43c3f91060965e69e06e3e5718dfd3c5006b5375545
+        // Senha: mensa2024
+        const SECRET_HASH = "8c66e4a287a9332ef43c3f91060965e69e06e3e5718dfd3c5006b5375545803d";
+
+        async function hashString(str) {
+            const msgBuffer = new TextEncoder().encode(str);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        document.getElementById('loginForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const input = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('errorMessage');
+            
+            try {
+                const hashedInput = await hashString(input);
+                if (hashedInput === SECRET_HASH) {
+                    // Remover o bloqueio
+                    document.getElementById('gatekeeper').style.display = 'none';
+                    const main = document.getElementById('mainContent');
+                    main.classList.remove('hidden');
+                    main.classList.add('fade-in');
+                    window.scrollTo(0, 0);
+                } else {
+                    errorMsg.classList.remove('hidden');
+                    document.getElementById('passwordInput').value = '';
+                }
+            } catch (err) {
+                console.error("Erro na validação:", err);
+            }
+        };
+    </script>
+
+</body>
+</html>
