@@ -199,38 +199,39 @@
     </div>
 
     <script>
-        // Senha: mensa2024
+        // A senha configurada é: mensa2024
+        // Hash SHA-256 de "mensa2024"
         const SECRET_HASH = "8c66e4a287a9332ef43c3f91060965e69e06e3e5718dfd3c5006b5375545803d";
 
-        async function hashString(str) {
-            const msgBuffer = new TextEncoder().encode(str);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        document.getElementById('loginForm').onsubmit = async (e) => {
-            e.preventDefault();
+        async function validate() {
             const input = document.getElementById('passwordInput').value;
             const errorMsg = document.getElementById('errorMessage');
             
-            try {
-                const hashedInput = await hashString(input);
-                if (hashedInput === SECRET_HASH) {
-                    // Remover o bloqueio
-                    document.getElementById('gatekeeper').style.display = 'none';
-                    const main = document.getElementById('mainContent');
-                    main.classList.remove('hidden');
-                    main.classList.add('fade-in');
-                    window.scrollTo(0, 0);
-                } else {
-                    errorMsg.classList.remove('hidden');
-                    document.getElementById('passwordInput').value = '';
-                }
-            } catch (err) {
-                console.error("Erro na validação:", err);
+            // Função interna para gerar o hash
+            const msgBuffer = new TextEncoder().encode(input);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashedInput = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            if (hashedInput === SECRET_HASH) {
+                // Sucesso: Liberta o conteúdo
+                document.getElementById('gatekeeper').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                document.getElementById('mainContent').classList.add('fade-in');
+                window.scrollTo(0, 0);
+            } else {
+                // Erro: Mostra mensagem e limpa campo
+                errorMsg.classList.remove('hidden');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
             }
-        };
+        }
+
+        // Intercepta a submissão do formulário
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            validate();
+        });
     </script>
 
 </body>
