@@ -199,39 +199,31 @@
     </div>
 
     <script>
-        // A senha configurada é: mensa2024
-        // Hash SHA-256 de "mensa2024"
-        const SECRET_HASH = "8c66e4a287a9332ef43c3f91060965e69e06e3e5718dfd3c5006b5375545803d";
+        // Senha configurada: mensa2024
+        const PASS = "mensa2024";
 
-        async function validate() {
-            const input = document.getElementById('passwordInput').value;
-            const errorMsg = document.getElementById('errorMessage');
+        document.getElementById('loginForm').onsubmit = function(e) {
+            e.preventDefault();
             
-            // Função interna para gerar o hash
-            const msgBuffer = new TextEncoder().encode(input);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashedInput = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            const input = document.getElementById('passwordInput').value.trim();
+            const gatekeeper = document.getElementById('gatekeeper');
+            const mainContent = document.getElementById('mainContent');
+            const errorMsg = document.getElementById('errorMessage');
 
-            if (hashedInput === SECRET_HASH) {
-                // Sucesso: Liberta o conteúdo
-                document.getElementById('gatekeeper').classList.add('hidden');
-                document.getElementById('mainContent').classList.remove('hidden');
-                document.getElementById('mainContent').classList.add('fade-in');
+            // Comparação direta (Case Sensitive)
+            if (input === PASS) {
+                // Sucesso: Remove o bloqueio
+                gatekeeper.style.display = 'none';
+                mainContent.classList.remove('hidden');
+                mainContent.classList.add('fade-in');
                 window.scrollTo(0, 0);
             } else {
-                // Erro: Mostra mensagem e limpa campo
+                // Erro: Mostra aviso e limpa campo
                 errorMsg.classList.remove('hidden');
                 document.getElementById('passwordInput').value = '';
                 document.getElementById('passwordInput').focus();
             }
-        }
-
-        // Intercepta a submissão do formulário
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            validate();
-        });
+        };
     </script>
 
 </body>
