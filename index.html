@@ -1,1 +1,288 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Voluntário | Mensa Brasil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://mensa.org.br/wp-content/uploads/2021/08/cropped-favicon-32x32.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            /* Cores extraídas do CSS oficial do mensa.org.br */
+            --mensa-green-dark: #004d4d; /* Verde escuro institucional */
+            --mensa-green-light: #006666; 
+            --mensa-yellow: #ffcc00; /* Amarelo vibrante dos botões e destaques */
+            --mensa-text: #2c3e50;
+            --mensa-bg-light: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--mensa-text);
+            background-color: white;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .bg-mensa-green { background-color: var(--mensa-green-dark); }
+        .bg-mensa-yellow { background-color: var(--mensa-yellow); }
+        .text-mensa-green { color: var(--mensa-green-dark); }
+        .text-mensa-yellow { color: var(--mensa-yellow); }
+        
+        .header-shadow {
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .section-accent {
+            width: 50px;
+            height: 4px;
+            background-color: var(--mensa-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-mensa {
+            background-color: var(--mensa-green-dark);
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-mensa:hover {
+            background-color: var(--mensa-yellow);
+            color: var(--mensa-green-dark);
+            border-color: var(--mensa-green-dark);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,77,77,0.1);
+        }
+
+        /* Gradiente oficial */
+        .mensa-gradient {
+            background: linear-gradient(135deg, var(--mensa-green-dark) 0%, var(--mensa-green-light) 100%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Nav -->
+    <header class="bg-white py-4 sticky top-0 z-50 header-shadow">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="https://mensa.org.br" target="_blank" class="flex items-center">
+                    <!-- Logótipo Oficial Mensa Brasil -->
+                    <img src="https://mensa.org.br/wp-content/uploads/2021/08/Mensa_Brasil_logo_vertical.png" alt="Mensa Brasil Logo" class="h-16 md:h-20 object-contain">
+                </a>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-mensa-green">
+                <a href="#intro" class="hover:text-mensa-yellow transition-colors">Aviso</a>
+                <a href="#estrutura" class="hover:text-mensa-yellow transition-colors">Estrutura</a>
+                <a href="#vagas" class="hover:text-mensa-yellow transition-colors">Vagas</a>
+                <a href="#candidatura" class="btn-mensa px-6 py-3 rounded-full uppercase tracking-widest text-[10px] shadow-sm">
+                    Inscrições
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="mensa-gradient py-24 relative overflow-hidden">
+        <div class="absolute right-0 bottom-0 opacity-10">
+            <i class="fas fa-brain text-[20rem] text-white"></i>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <span class="text-mensa-yellow font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Documento de Orientação Operacional</span>
+            <h2 class="text-white text-5xl md:text-7xl font-bold mb-6 serif italic">Manual do Voluntário</h2>
+            <p class="text-gray-100 text-xl max-w-2xl font-light leading-relaxed opacity-90">
+                Alinhando inteligência, propósito e estrutura para o crescimento da Mensa Brasil.
+            </p>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-6 py-20">
+        
+        <!-- Prefácio Académico -->
+        <article id="intro" class="mb-32">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="section-accent"></div>
+                    <h3 class="text-4xl font-bold text-mensa-green mb-6 serif">A Fenomenologia do Conflito</h3>
+                    <p class="text-gray-600 mb-6 text-lg italic">
+                        "Onde há paixão pelo trabalho voluntário, há risco de choque emocional se a estrutura não for sólida."
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Analisamos que a <strong>acusação mútua</strong> é uma patologia comum em ONGs. Na Mensa, combatemos este fenómeno através da clareza absoluta de papéis e da profissionalização das relações.
+                    </p>
+                </div>
+                
+                <div class="bg-mensa-bg-light p-8 rounded-2xl border-l-8 border-mensa-green">
+                    <h4 class="font-bold text-mensa-green mb-4 uppercase text-sm tracking-widest">Factores de Risco Estrutural</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mensa-yellow mt-1 mr-3"></i>
+                            <span class="text-sm"><strong>Ambiguidade de Papéis:</strong> Quando as tarefas não têm "dono" claro, o erro gera busca por culpados.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mensa-yellow mt-1 mr-3"></i>
+                            <span class="text-sm"><strong>Sobrecarga Cognitiva:</strong> Voluntários exaustos têm menor limiar de tolerância ao erro alheio.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mensa-yellow mt-1 mr-3"></i>
+                            <span class="text-sm"><strong>Falta de Feedback Formal:</strong> A ausência de processos de RH torna as críticas subjectivas e agressivas.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- Estrutura Hierárquica -->
+        <section id="estrutura" class="mb-32">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-mensa-green mb-4 serif">Estrutura de Reporte</h3>
+                <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">A Hierarquia de Apoio</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Diretoria -->
+                <div class="bg-mensa-green p-8 rounded-xl text-center shadow-xl">
+                    <h4 class="text-white font-bold text-xl uppercase tracking-widest">Diretoria Executiva</h4>
+                    <p class="text-mensa-yellow text-xs mt-2 uppercase font-bold">Direção Geral e Visão</p>
+                </div>
+
+                <div class="flex justify-center">
+                    <i class="fas fa-long-arrow-alt-down text-gray-200 text-3xl"></i>
+                </div>
+
+                <!-- RH de Voluntários / Ivana -->
+                <div class="bg-white border-4 border-mensa-green p-10 rounded-xl text-center relative shadow-2xl">
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-mensa-yellow text-mensa-green px-6 py-2 rounded-full font-black text-xs uppercase shadow-md">
+                        Ponto Focal do Voluntariado
+                    </div>
+                    <h4 class="text-3xl font-bold text-mensa-green serif">RH & Bem-Estar</h4>
+                    <p class="text-gray-500 mt-2 font-semibold">Diretora Responsável: <span class="text-mensa-green">Ivana</span></p>
+                    <div class="mt-6 flex justify-center space-x-4">
+                        <span class="bg-gray-100 px-3 py-1 rounded text-[10px] font-bold text-gray-500 uppercase">Recrutamento</span>
+                        <span class="bg-gray-100 px-3 py-1 rounded text-[10px] font-bold text-gray-500 uppercase">Mediação</span>
+                        <span class="bg-gray-100 px-3 py-1 rounded text-[10px] font-bold text-gray-500 uppercase">Acolhimento</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-center">
+                    <i class="fas fa-long-arrow-alt-down text-gray-200 text-3xl"></i>
+                </div>
+
+                <!-- Áreas -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-lg text-center border border-gray-100">
+                        <h5 class="font-bold text-mensa-green uppercase text-sm">Coordenadores de Área</h5>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg text-center border border-gray-100">
+                        <h5 class="font-bold text-mensa-green uppercase text-sm">Membros Voluntários</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quadros e Vagas -->
+        <section id="vagas" class="mb-32">
+            <div class="flex items-end justify-between mb-12">
+                <h3 class="text-4xl font-bold text-mensa-green serif italic">Áreas de Atuação</h3>
+                <span class="text-gray-300 font-black text-6xl opacity-20">SIGS</span>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Vaga 1 -->
+                <div class="bg-white p-8 rounded-2xl border-t-8 border-mensa-green shadow-lg card-hover">
+                    <i class="fas fa-laptop-code text-3xl text-mensa-green mb-6"></i>
+                    <h4 class="font-bold text-xl text-mensa-green mb-4">Tecnologia (TI)</h4>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">Desenvolvimento, suporte ao site e gestão de sistemas de membros.</p>
+                    <div class="pt-4 border-t border-gray-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold text-mensa-yellow bg-mensa-green px-2 py-1 rounded">2 Vagas</span>
+                        <a href="#" class="text-xs font-bold text-mensa-green hover:underline">Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- Vaga 2 -->
+                <div class="bg-white p-8 rounded-2xl border-t-8 border-mensa-yellow shadow-lg card-hover">
+                    <i class="fas fa-comments text-3xl text-mensa-green mb-6"></i>
+                    <h4 class="font-bold text-xl text-mensa-green mb-4">Comunicação</h4>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">Redação de boletins, gestão de redes sociais e design gráfico.</p>
+                    <div class="pt-4 border-t border-gray-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold text-mensa-green bg-gray-100 px-2 py-1 rounded">Urgente</span>
+                        <a href="#" class="text-xs font-bold text-mensa-green hover:underline">Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- Vaga 3 -->
+                <div class="bg-white p-8 rounded-2xl border-t-8 border-mensa-green shadow-lg card-hover">
+                    <i class="fas fa-file-invoice text-3xl text-mensa-green mb-6"></i>
+                    <h4 class="font-bold text-xl text-mensa-green mb-4">Administração</h4>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">Suporte administrativo e organização de processos da secretaria.</p>
+                    <div class="pt-4 border-t border-gray-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold text-mensa-green bg-gray-100 px-2 py-1 rounded">Fluxo Contínuo</span>
+                        <a href="#" class="text-xs font-bold text-mensa-green hover:underline">Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Candidatura -->
+        <section id="candidatura" class="bg-mensa-bg-light rounded-[3rem] p-12 md:p-24 text-center">
+            <h3 class="text-4xl md:text-5xl font-bold text-mensa-green mb-8 serif">Junte-se ao nosso Quadro</h3>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
+                Seja para projetos temporários ou funções de longo prazo, a sua inteligência é o nosso maior recurso.
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#" class="btn-mensa px-12 py-5 rounded-full text-sm uppercase tracking-widest shadow-xl">
+                    Candidatar-me via Formulário
+                </a>
+                <a href="#" class="bg-white text-mensa-green border-2 border-mensa-green px-12 py-5 rounded-full text-sm uppercase tracking-widest font-bold hover:bg-gray-50 transition-all shadow-md">
+                    Calendário de Reuniões
+                </a>
+            </div>
+
+            <div class="mt-16 text-sm text-gray-400">
+                <p>Responsável pelo Voluntariado: <a href="mailto:bemestar@mensa.org.br" class="text-mensa-green font-bold hover:text-mensa-yellow underline decoration-mensa-yellow">Diretoria de Bem-Estar (Ivana)</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-mensa-green py-20 text-white relative">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-8 md:mb-0">
+                <img src="https://mensa.org.br/wp-content/uploads/2021/08/Mensa_Brasil_logo_vertical.png" alt="Mensa" class="h-20 brightness-0 invert">
+                <p class="text-xs text-gray-400 mt-4 tracking-widest uppercase font-bold">Mensa Brasil © 2024</p>
+            </div>
+            
+            <div class="text-center md:text-right space-y-4">
+                <p class="serif italic text-2xl text-mensa-yellow">Sapere Aude</p>
+                <div class="flex space-x-6 justify-center md:justify-end text-xl">
+                    <a href="#" class="hover:text-mensa-yellow"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-mensa-yellow"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-mensa-yellow"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="h-2 bg-mensa-yellow absolute bottom-0 w-full"></div>
+    </footer>
+
+</body>
+</html>
